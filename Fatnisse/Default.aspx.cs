@@ -12,16 +12,7 @@ namespace Fatnisse
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!DBHelper.CheckAuth())
-            {
-                Response.Redirect("Login.aspx?ReturnUrl=Default.aspx");
-            }
-            else
-            {
-                string email = HttpContext.Current.User.Identity.Name;
-                btnLogin.Visible = false;
-                navbar.InnerHtml = "<span> Welcome, " + email + "</span>";
-            }
+            
         }
     }
 }
