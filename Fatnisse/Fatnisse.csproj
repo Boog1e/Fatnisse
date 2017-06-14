@@ -170,6 +170,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\EncryptionHelper.cs" />
+    <Compile Include="App_Code\Team.cs" />
     <Compile Include="App_Code\User.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="Default.aspx.cs">

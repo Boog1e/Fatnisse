@@ -18,19 +18,49 @@ namespace Fatnisse
             else
             {
                 string email = HttpContext.Current.User.Identity.Name;
-                User user = DBHelper.GetUser(email);
+                User user = DBHelper.GetMemberFromEmail(email);
                 if (user.id != 0 && user.id != null)
                 {
-                    btnLogin.Visible = false;
-                    navbar.InnerHtml = "<span> Welcome, " + user.firstName + " " + user.lastName + "</span>";
-                    txtEmail.Text = user.email;
-                    txtPhone.Text = user.phone;
+                    if (!IsPostBack)
+                    {
+                        btnLogin.Visible = false;
+                        navbar.InnerHtml = navbar.InnerHtml = "<span>Welcome, <a href='Profile.aspx'>" + user.firstName + " " + user.lastName + "</a></span>";
+                        txtEmail.Text = user.email;
+                        txtPhone.Text = user.phone;
+                        txtFirstname.Text = user.firstName;
+                        txtLastname.Text = user.lastName;
+                        hdnID.Value = user.id.ToString();
+                    }
                 }
                 else
                 {
                     Response.Redirect("Login.aspx?ReturnUrl=Profile.aspx");
                 }
             }
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            //Edit userinformation
+            if (DBHelper.UpdateUser(hdnID.Value.ToString(), txtFirstname.Text, txtLastname.Text, txtPhone.Text, txtEmail.Text))
+            {
+                User user = DBHelper.GetMemberFromID(hdnID.Value.ToString());
+                txtFirstname.Text = user.firstName;
+                txtLastname.Text = user.lastName;
+                txtPhone.Text = user.phone;
+                txtEmail.Text = user.email;
+                navbar.InnerHtml = navbar.InnerHtml = "<span>Welcome, <a href='Profile.aspx'>" + user.firstName + " " + user.lastName + "</a></span>";
+                btnLogin.Visible = false;
+            }
+            else
+            {
+                //Error
+            }
+        }
+
+        protected void btnChangePassword_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

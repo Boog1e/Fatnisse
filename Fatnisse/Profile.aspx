@@ -35,6 +35,13 @@
             text-align:left;
             float:left;
         }
+
+         .roundCorners {
+            border-radius: 5px;
+            border: 2px solid rgba(102, 102, 102, 1);
+            padding: 8px;
+            width: 200px;
+        }
     </style>
 </head>
 <body>
@@ -72,10 +79,23 @@
                         <div class="col-lg-12">
                             <div>
                                 <h1 class="information">User information</h1>
+                                <asp:HiddenField ID="hdnID" Value="" runat="server" />
                                 <h5 class="field">Email</h5><br /><br />
-                                <asp:Label ID="txtEmail" runat="server" Text="" CssClass="field"></asp:Label><br /><br />
+                                <asp:TextBox ID="txtEmail" runat="server" CssClass="field roundCorners" Text=""></asp:TextBox><br /><br />
                                 <h5 class="field">Phone</h5><br /><br />
-                                <asp:Label ID="txtPhone" runat="server" Text="" CssClass="field"></asp:Label>
+                                <asp:TextBox ID="txtPhone" runat="server" CssClass="field roundCorners" Text=""></asp:TextBox><br /><br />
+                                <h5 class="field">Firstname</h5><br /><br />
+                                <asp:TextBox ID="txtFirstname" runat="server" CssClass="field roundCorners" Text=""></asp:TextBox><br /><br />
+                                <h5 class="field">Lastname</h5><br /><br />
+                                <asp:TextBox ID="txtLastname" runat="server" CssClass="field roundCorners" Text=""></asp:TextBox><br /><br />
+                                <asp:Button ID="btnSave" Text="Save" runat="server" CssClass="btn-success roundCorners" OnClick="btnSave_Click" />
+
+                                <h1 class="information">Change password</h1>
+                                <h5 class="field">Old Password</h5><br /><br />
+                                <asp:TextBox ID="txtOldPassword" runat="server" CssClass="field roundCorners" Text=""></asp:TextBox><br /><br />
+                                <h5 class="field">New Password</h5><br /><br />
+                                <asp:TextBox ID="txtNewPassword" runat="server" CssClass="field roundCorners" Text=""></asp:TextBox><br /><br />
+                                <asp:Button ID="btnChangePassword" Text="Save" runat="server" CssClass="btn-success roundCorners" OnClick="btnChangePassword_Click" />
                             </div>
                         </div>
                     </div>

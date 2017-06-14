@@ -78,11 +78,10 @@
                             <div class="intro-message">
                                 <asp:TextBox ID="txtFirstname" runat="server" Placeholder="Firstname" CssClass="TextField roundCorners"></asp:TextBox><br />
                                 <asp:TextBox ID="txtLastname" runat="server" Placeholder="Lastname" CssClass="TextField roundCorners"></asp:TextBox><br />
-                                <asp:TextBox ID="txtAddress" runat="server" Placeholder="Address" CssClass="TextField roundCorners"></asp:TextBox><br />
                                 <asp:TextBox ID="txtPhone" runat="server" Placeholder="Phone number" CssClass="TextField roundCorners"></asp:TextBox><br />
                                 <asp:TextBox ID="txtEmail" runat="server" Placeholder="Email" CssClass="TextField roundCorners"></asp:TextBox><br />
                                 <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" Placeholder="Password" CssClass="TextField roundCorners"></asp:TextBox><br />
-                                <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="TextField" />
+                                <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="TextField" OnClick="btnRegister_Click" />
                             </div>
                         </div>
                     </div>
