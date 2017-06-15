@@ -60,7 +60,7 @@ namespace Fatnisse
 
         protected void btnChangePassword_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

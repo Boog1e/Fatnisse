@@ -19,7 +19,7 @@ namespace Fatnisse
         {
             if (Regex.IsMatch(txtEmail.Text, @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"))
             {
-                if (Regex.IsMatch(txtPhone.Text, "/([0-9]{2} ){3}[0-9]{2}/"))
+                if (true)
                 {
                     bool created = DBHelper.CreateUser(txtFirstname.Text, txtLastname.Text, txtPhone.Text, txtEmail.Text, txtPassword.Text);
                     if (created)

@@ -78,6 +78,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div>
+                                <!-- USER INFORMATION -->
                                 <h1 class="information">User information</h1>
                                 <asp:HiddenField ID="hdnID" Value="" runat="server" />
                                 <h5 class="field">Email</h5><br /><br />
@@ -96,6 +97,11 @@
                                 <h5 class="field">New Password</h5><br /><br />
                                 <asp:TextBox ID="txtNewPassword" runat="server" CssClass="field roundCorners" Text=""></asp:TextBox><br /><br />
                                 <asp:Button ID="btnChangePassword" Text="Save" runat="server" CssClass="btn-success roundCorners" OnClick="btnChangePassword_Click" />
+                                <!-- USER INFORMATION END -->
+
+                                <h1 class="information">Subscription</h1>
+
+
                             </div>
                         </div>
                     </div>

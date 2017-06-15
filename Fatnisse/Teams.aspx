@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="Fatnisse.Register" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Teams.aspx.cs" Inherits="Fatnisse.Teams" %>
 
 <!DOCTYPE html>
 
@@ -12,23 +12,7 @@
     <meta name="author" content="">
 
     <title>Fatnisse</title>
-    <style>
-        .TextField {
-            color: rgba(102, 102, 102, 1);
-        }
 
-        .roundCorners {
-            border-radius: 5px;
-            border: 2px solid rgba(102, 102, 102, 1);
-            padding: 8px;
-            width: 200px;
-        }
-
-        .intro-message {
-            padding-top: 10% !important;
-            padding-bottom: 10% !important;
-        }
-    </style>
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -38,6 +22,27 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <style>
+        .information{
+            color:black;
+            text-align:left;
+            text-decoration:underline;
+        }
+
+        .field{
+            color:black;
+            text-align:left;
+            float:left;
+        }
+
+         .roundCorners {
+            border-radius: 5px;
+            border: 2px solid rgba(102, 102, 102, 1);
+            padding: 8px;
+            width: 100px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -58,8 +63,8 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="Login.aspx">Login</a>
+                            <li id="navbar" runat="server">
+                                <a id="btnLogin" runat="server" href="Login.aspx">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -67,28 +72,20 @@
                 </div>
                 <!-- /.container -->
             </nav>
-
-
             <!-- Header -->
-            <div class="intro-header">
+            <div class="intro-header" style="background: none !important;">
                 <div class="container">
-
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="intro-message">
-                                <asp:TextBox ID="txtFirstname" runat="server" Placeholder="Firstname" CssClass="TextField roundCorners"></asp:TextBox><br />
-                                <asp:TextBox ID="txtLastname" runat="server" Placeholder="Lastname" CssClass="TextField roundCorners"></asp:TextBox><br />
-                                <asp:TextBox ID="txtPhone" runat="server" Placeholder="Phone number" CssClass="TextField roundCorners"></asp:TextBox><br />
-                                <asp:TextBox ID="txtEmail" runat="server" Placeholder="Email" CssClass="TextField roundCorners"></asp:TextBox><br />
-                                <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" Placeholder="Password" CssClass="TextField roundCorners"></asp:TextBox><br />
-                                <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="TextField btn-success roundCorners" OnClick="btnRegister_Click" />
+                            <div>
+                                <h1 class="information">Teams</h1>
+                                <div id="divTeams" runat="server"></div>
+
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <!-- /.container -->
-
             </div>
             <!-- /.intro-header -->
             <!-- Footer -->

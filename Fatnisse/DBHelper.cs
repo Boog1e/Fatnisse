@@ -298,4 +298,32 @@ public class DBHelper
 
         return false;
     }
+
+    public static bool AddUserToTeam(string teamId, string userId)
+    {
+        var json = "";
+
+        using (WebClient web = new WebClient())
+        {
+            json = web.DownloadString("http://jako34982.web.techcollege.dk/WebService.asmx/AddUserToTeam?userId=" + userId + "&teamId=" + teamId);
+        }
+
+        if(json != "" && json != null)
+        {
+            JObject jOjbect = JObject.Parse(json);
+            if(jOjbect != null)
+            {
+                if(jOjbect["Success"].ToString() == "True")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        return false;
+    }
 }
