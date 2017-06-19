@@ -14,7 +14,6 @@ public class DBHelper
 
         using (WebClient web = new WebClient())
         {
-            //Getting json data from web-service
             json = web.DownloadString("http://jako34982.web.techcollege.dk/WebService.asmx/CheckLogin?email=" + email + "&password=" + password);
         }
 
@@ -77,11 +76,11 @@ public class DBHelper
             json = web.DownloadString("http://jako34982.web.techcollege.dk/WebService.asmx/CreateUser?firstname=" + firstName + "&lastname=" + lastName + "&phone=" + phone + "&email=" + email + "&password=" + password);
         }
 
-        if(json != "" && json != null)
+        if (json != "" && json != null)
         {
             JObject jObject = JObject.Parse(json);
 
-            if(jObject["Success"].ToString() == "True")
+            if (jObject["Success"].ToString() == "True")
             {
                 return true;
             }
@@ -190,7 +189,7 @@ public class DBHelper
             JObject jObject = JObject.Parse(json);
             if (jObject != null)
             {
-                if(jObject["Success"].ToString() == "True")
+                if (jObject["Success"].ToString() == "True")
                 {
                     user.id = Convert.ToInt32(jObject["Response"]["id"]);
                     user.firstName = jObject["Response"]["firstName"].ToString();
@@ -214,12 +213,12 @@ public class DBHelper
             json = web.DownloadString("http://jako34982.web.techcollege.dk/WebService.asmx/GetMembers");
         }
 
-        if(json != "" && json != null)
+        if (json != "" && json != null)
         {
             JObject jObject = JObject.Parse(json);
-            if(jObject != null)
+            if (jObject != null)
             {
-                if(jObject["Success"].ToString() == "True")
+                if (jObject["Success"].ToString() == "True")
                 {
                     foreach (JObject obj in jObject["Response"])
                     {
@@ -280,12 +279,12 @@ public class DBHelper
             json = web.DownloadString("http://jako34982.web.techcollege.dk/WebService.asmx/UpdateUser?id=" + id + "&firstname=" + firstname + "&lastname=" + lastname + "&phone=" + phone + "&email=" + email);
         }
 
-        if(json != "" && json != null)
+        if (json != "" && json != null)
         {
             JObject jObject = JObject.Parse(json);
-            if(jObject != null)
+            if (jObject != null)
             {
-                if(jObject["Success"].ToString() == "True")
+                if (jObject["Success"].ToString() == "True")
                 {
                     return true;
                 }
@@ -308,12 +307,221 @@ public class DBHelper
             json = web.DownloadString("http://jako34982.web.techcollege.dk/WebService.asmx/AddUserToTeam?userId=" + userId + "&teamId=" + teamId);
         }
 
-        if(json != "" && json != null)
+        if (json != "" && json != null)
         {
             JObject jOjbect = JObject.Parse(json);
-            if(jOjbect != null)
+            if (jOjbect != null)
             {
-                if(jOjbect["Success"].ToString() == "True")
+                if (jOjbect["Success"].ToString() == "True")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public static List<Subscription> GetSubscriptions()
+    {
+        var json = "";
+        List<Subscription> subscriptions = new List<Subscription>();
+
+        using (WebClient web = new WebClient())
+        {
+            json = web.DownloadString("http://jako34982.web.techcollege.dk/WebService.asmx/GetSubscriptions");
+        }
+
+        if (json != "" && json != null)
+        {
+            JObject jObject = JObject.Parse(json);
+            if (jObject != null)
+            {
+                if (jObject["Success"].ToString() == "True")
+                {
+                    foreach (JObject obj in jObject["Response"])
+                    {
+                        subscriptions.Add(new Subscription()
+                        {
+                            id = Convert.ToInt32(obj["id"]),
+                            name = obj["name"].ToString(),
+                            price = Convert.ToInt32(obj["price"])
+                        });
+                    }
+                }
+            }
+        }
+
+        return subscriptions;
+    }
+
+    public static List<Team> GetTeamFromUser(string userId)
+    {
+        var json = "";
+        List<Team> courses = new List<Team>();
+
+        using (WebClient web = new WebClient())
+        {
+            json = web.DownloadString("http://jako34982.web.techcollege.dk/WebService.asmx/GetTeamFromUser?userId=" + userId);
+        }
+
+        if (json != "" && json != null)
+        {
+            JObject jObject = JObject.Parse(json);
+            if (jObject != null)
+            {
+                if (jObject["Success"].ToString() == "True")
+                {
+                    foreach (JObject obj in jObject["Response"])
+                    {
+                        courses.Add(new Team()
+                        {
+                            id = Convert.ToInt32(obj["id"]),
+                            name = obj["name"].ToString()
+                        });
+                    }
+                }
+            }
+        }
+
+        return courses;
+    }
+
+    public static bool ChangePassword(string oldPassword, string newPassword, string userId)
+    {
+        var json = "";
+
+        using (WebClient web = new WebClient())
+        {
+            json = web.DownloadString("http://jako34982.web.techcollege.dk/WebService.asmx/ChangePassword?id=" + userId + "&oldPassword=" + oldPassword + "&newPassword=" + newPassword);
+        }
+
+        if (json != "" && json != null)
+        {
+            JObject jObject = JObject.Parse(json);
+            if (jObject != null)
+            {
+                if (jObject["Success"].ToString() == "True")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public static bool RemoveUserFromTeam(string userId, string teamId)
+    {
+        var json = "";
+
+        using (WebClient web = new WebClient())
+        {
+            json = web.DownloadString("http://jako34982.web.techcollege.dk/WebService.asmx/RemoveUserFromTeam?userId=" + userId + "&teamId=" + teamId);
+        }
+
+        if (json != "" && json != null)
+        {
+            JObject jObject = JObject.Parse(json);
+            if (jObject != null)
+            {
+                if (jObject["Success"].ToString() == "True")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public static List<Subscription> GetSubscriptionFromUser(string userId)
+    {
+        var json = "";
+        List<Subscription> subs = new List<Subscription>();
+
+        using (WebClient web = new WebClient())
+        {
+            json = web.DownloadString("http://jako34982.web.techcollege.dk/WebService.asmx/GetSubscriptionFromUser?userId=" + userId);
+        }
+
+        if (json != "" && json != null)
+        {
+            JObject jObject = JObject.Parse(json);
+            if (jObject != null)
+            {
+                if (jObject["Success"].ToString() == "True")
+                {
+                    foreach (JObject obj in jObject["Response"])
+                    {
+                        subs.Add(new Subscription()
+                        {
+                            id = Convert.ToInt32(obj["id"]),
+                            name = obj["name"].ToString(),
+                            price = Convert.ToInt32(obj["price"])
+                        });
+                    }
+                }
+            }
+        }
+        return subs;
+    }
+
+    public static bool RemoveUserFromSubscription(string userId, string subId)
+    {
+        var json = "";
+
+        using (WebClient web = new WebClient())
+        {
+            json = web.DownloadString("http://jako34982.web.techcollege.dk/WebService.asmx/RemoveUserFromSubscription?userId=" + userId + "&subId=" + subId);
+        }
+
+        if (json != "" && json != null)
+        {
+            JObject jObject = JObject.Parse(json);
+            if (jObject != null)
+            {
+                if (jObject["Success"].ToString() == "True")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public static bool AddUserToSubscription(string userId, string subId)
+    {
+        var json = "";
+
+        using (WebClient web = new WebClient())
+        {
+            json = web.DownloadString("http://jako34982.web.techcollege.dk/WebService.asmx/AddUserToSubscription?userId=" + userId + "&subscriptionId=" + subId);
+        }
+
+        if (json != "" && json != null)
+        {
+            JObject jObject = JObject.Parse(json);
+            if (jObject != null)
+            {
+                if (jObject["Success"].ToString() == "True")
                 {
                     return true;
                 }

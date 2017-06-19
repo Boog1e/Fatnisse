@@ -25,7 +25,7 @@ namespace Fatnisse
                     if (!IsPostBack)
                     {
                         btnLogin.Visible = false;
-                        navbar.InnerHtml = "<span>Welcome, <a href='Profile.aspx'>" + user.firstName + " " + user.lastName + "</a></span>";
+                        navbar.InnerHtml = "<ul class='nav navbar-nav navbar-right' runat='server'><li><a href='Profile.aspx'>Profile</a></li><li><a href='Teams.aspx'>Courses</a></li><li><a href='Subscribe.aspx'>Subscription</a></li></ul>";
                     }
                 }
                 else

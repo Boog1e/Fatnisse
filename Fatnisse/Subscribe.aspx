@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="Fatnisse.Profile" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Subscribe.aspx.cs" Inherits="Fatnisse.Subscribe" %>
 
 <!DOCTYPE html>
 
@@ -40,7 +40,7 @@
             border-radius: 5px;
             border: 2px solid rgba(102, 102, 102, 1);
             padding: 8px;
-            width: 200px;
+            width: 100px;
         }
     </style>
 </head>
@@ -78,32 +78,9 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div>
-                                <!-- USER INFORMATION -->
-                                <h1 class="information">User information</h1>
-                                <asp:HiddenField ID="hdnID" Value="" runat="server" />
-                                <h5 class="field">Email</h5><br /><br />
-                                <asp:TextBox ID="txtEmail" runat="server" CssClass="field roundCorners" Text=""></asp:TextBox><br /><br />
-                                <h5 class="field">Phone</h5><br /><br />
-                                <asp:TextBox ID="txtPhone" runat="server" CssClass="field roundCorners" Text=""></asp:TextBox><br /><br />
-                                <h5 class="field">Firstname</h5><br /><br />
-                                <asp:TextBox ID="txtFirstname" runat="server" CssClass="field roundCorners" Text=""></asp:TextBox><br /><br />
-                                <h5 class="field">Lastname</h5><br /><br />
-                                <asp:TextBox ID="txtLastname" runat="server" CssClass="field roundCorners" Text=""></asp:TextBox><br /><br />
-                                <asp:Button ID="btnSave" Text="Save" runat="server" CssClass="btn-success roundCorners" OnClick="btnSave_Click" />
+                                <h1 class="information">Subscriptions</h1>
+                                <div id="divSubscriptions" runat="server"></div>
 
-                                <h1 class="information">Change password</h1>
-                                <h5 class="field">Old Password</h5><br /><br />
-                                <asp:TextBox ID="txtOldPassword" runat="server" CssClass="field roundCorners" Text=""></asp:TextBox><br /><br />
-                                <h5 class="field">New Password</h5><br /><br />
-                                <asp:TextBox ID="txtNewPassword" runat="server" CssClass="field roundCorners" Text=""></asp:TextBox><br /><br />
-                                <asp:Button ID="btnChangePassword" Text="Save" runat="server" CssClass="btn-success roundCorners" OnClick="btnChangePassword_Click" />
-                                <!-- USER INFORMATION END -->
-
-                                <h1 class="information">Courses</h1>
-                                <div id="divCourses" runat="server"></div><br /><br />
-
-                                <h1 class="information">Subscription</h1>
-                                <div id="divSubscription" runat="server"></div>
                             </div>
                         </div>
                     </div>

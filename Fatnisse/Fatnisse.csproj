@@ -165,12 +165,21 @@
     <Content Include="Register.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="Subscribe.aspx" />
     <Content Include="Teams.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\Subscription.cs" />
+    <Compile Include="Subscribe.aspx.cs">
+      <DependentUpon>Subscribe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Subscribe.aspx.designer.cs">
+      <DependentUpon>Subscribe.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Teams.aspx.cs">
       <DependentUpon>Teams.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -178,7 +187,6 @@
     <Compile Include="Teams.aspx.designer.cs">
       <DependentUpon>Teams.aspx</DependentUpon>
     </Compile>
-    <Content Include="App_Code\EncryptionHelper.cs" />
     <Compile Include="App_Code\Team.cs" />
     <Compile Include="App_Code\User.cs" />
     <Compile Include="DBHelper.cs" />
