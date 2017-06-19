@@ -48,7 +48,7 @@ namespace Fatnisse
                         div.Controls.Add(lbl);
 
                         Button b = new Button();
-                        b.ID = course.id.ToString();
+                        b.ID = course.id.ToString() + "_course";
                         b.Text = "Remove";
                         b.Attributes.Add("style", "float:right;");
                         b.Attributes.Add("class", "roundCorners btn-danger");
@@ -71,7 +71,7 @@ namespace Fatnisse
                         div.Controls.Add(lbl);
 
                         Button b = new Button();
-                        b.ID = sub.id.ToString();
+                        b.ID = sub.id.ToString() + "_sub";
                         b.Text = "Remove";
                         b.Attributes.Add("style", "float:right;");
                         b.Attributes.Add("class", "roundCorners btn-danger");
@@ -92,7 +92,7 @@ namespace Fatnisse
         {
             //Remove my subscription
             Button btnClicked = (Button)sender;
-            if (DBHelper.RemoveUserFromSubscription(hdnID.Value, btnClicked.ID))
+            if (DBHelper.RemoveUserFromSubscription(hdnID.Value, btnClicked.ID.ToString().Replace("_sub", "")))
             {
                 //Removed
                 Response.Redirect("Profile.aspx");
@@ -139,7 +139,7 @@ namespace Fatnisse
         {
             //Remove me from team
             Button btnClicked = (Button)sender;
-            if (DBHelper.RemoveUserFromTeam(hdnID.Value, btnClicked.ID))
+            if (DBHelper.RemoveUserFromTeam(hdnID.Value, btnClicked.ID.ToString().Replace("_course", "")))
             {
                 //Removed
                 Response.Redirect("Profile.aspx");

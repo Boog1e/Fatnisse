@@ -72,7 +72,7 @@
                         <div class="col-lg-12">
                             <div class="intro-message">
                                 <asp:TextBox ID="txtEmail" runat="server" PlaceHolder="Email" CssClass="TextField roundCorners"></asp:TextBox><br />
-                                <asp:TextBox ID="txtPassword" runat="server" Placeholder="Password" CssClass="TextField roundCorners"></asp:TextBox><br />
+                                <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" Placeholder="Password" CssClass="TextField roundCorners"></asp:TextBox><br />
                                 <asp:Button ID="btnLogin" OnClick="btnLogin_Click" runat="server" Text="Login" CssClass="TextField" />
                                 <a href="Register.aspx">Register</a>
                             </div>
