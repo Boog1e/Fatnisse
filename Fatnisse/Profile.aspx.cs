@@ -12,6 +12,7 @@ namespace Fatnisse
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //If access granted
             if (!DBHelper.CheckAuth())
             {
                 Response.Redirect("Login.aspx?ReturnUrl=Profile.aspx");
@@ -24,6 +25,7 @@ namespace Fatnisse
                 {
                     if (!IsPostBack)
                     {
+                        //Change navbar information as well as textbox information to fit the logged in user
                         btnLogin.Visible = false;
                         navbar.InnerHtml = "<ul class='nav navbar-nav navbar-right' runat='server'><li><a href='Profile.aspx'>Profile</a></li><li><a href='Teams.aspx'>Courses</a></li><li><a href='Subscribe.aspx'>Subscription</a></li></ul>";
                         txtEmail.Text = user.email;
@@ -35,9 +37,11 @@ namespace Fatnisse
 
                     divCourses.InnerHtml = "";
 
+                    //Get all courses that user is assigned
                     List<Team> courses = DBHelper.GetTeamFromUser(user.id.ToString());
                     foreach (Team course in courses)
                     {
+                        //Create a new div for each course user is assigned
                         HtmlGenericControl div = new HtmlGenericControl("div");
                         div.Attributes.Add("style", "float:left;color:black;border: 1px solid;padding:5px;width:100%;margin-bottom:3px;");
                         div.Attributes.Add("class", "roundCorners");
@@ -58,9 +62,11 @@ namespace Fatnisse
                         divCourses.Controls.Add(div);
                     }
 
+                    //Get all subscriptions user is assigned to
                     List<Subscription> GetAllSubs = DBHelper.GetSubscriptionFromUser(user.id.ToString());
                     foreach (Subscription sub in GetAllSubs)
                     {
+                        //Get all subscriptions
                         HtmlGenericControl div = new HtmlGenericControl("div");
                         div.Attributes.Add("style", "float:left;color:black;border: 1px solid;padding:5px;width:100%;margin-bottom:3px;");
                         div.Attributes.Add("class", "roundCorners");
@@ -128,6 +134,7 @@ namespace Fatnisse
             if(DBHelper.ChangePassword(txtOldPassword.Text, txtNewPassword.Text, hdnID.Value))
             {
                 //Password changed
+                Response.Redirect("Profile.aspx");
             }
             else
             {

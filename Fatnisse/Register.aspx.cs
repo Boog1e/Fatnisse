@@ -17,10 +17,13 @@ namespace Fatnisse
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
+            //Check if regex is email matching
             if (Regex.IsMatch(txtEmail.Text, @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"))
             {
+                //Check if phone number is danish
                 if (true)
                 {
+                    //Create user
                     bool created = DBHelper.CreateUser(txtFirstname.Text, txtLastname.Text, txtPhone.Text, txtEmail.Text, txtPassword.Text);
                     if (created)
                         Response.Redirect("Login.aspx");

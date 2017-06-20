@@ -22,12 +22,15 @@ namespace Fatnisse
                 User user = DBHelper.GetMemberFromEmail(email);
                 if (user.id != 0 && user.id != null)
                 {
+                    //Change navbar information to logged in user
                     btnLogin.Visible = false;
                     navbar.InnerHtml = "<ul class='nav navbar-nav navbar-right' runat='server'><li><a href='Profile.aspx'>Profile</a></li><li><a href='Teams.aspx'>Courses</a></li><li><a href='Subscribe.aspx'>Subscription</a></li></ul>";
 
+                    //All subscriptions user is assigned to
                     List<Subscription> allSubsOnUser = DBHelper.GetSubscriptionFromUser(user.id.ToString());
                     foreach (Subscription sub in DBHelper.GetSubscriptions())
                     {
+                        //If user isnt a part of the subscription plan, he can see it otherwise not (it can be viewed under profile.aspx
                         if (!allSubsOnUser.Any(item => item.id == sub.id))
                         {
                             HtmlGenericControl div = new HtmlGenericControl("div");

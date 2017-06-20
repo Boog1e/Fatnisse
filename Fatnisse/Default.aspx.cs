@@ -24,6 +24,7 @@ namespace Fatnisse
                 {
                     if (!IsPostBack)
                     {
+                        //Change navbar information to fit logged in user
                         btnLogin.Visible = false;
                         navbar.InnerHtml = "<ul class='nav navbar-nav navbar-right' runat='server'><li><a href='Profile.aspx'>Profile</a></li><li><a href='Teams.aspx'>Courses</a></li><li><a href='Subscribe.aspx'>Subscription</a></li></ul>";
                     }

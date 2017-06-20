@@ -17,10 +17,10 @@ namespace Fatnisse
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            bool admin;
             string email = txtEmail.Text.Trim();
             if (DBHelper.CheckUser(email, txtPassword.Text.Trim()))
             {
+                //Setting custom cookie that we can extract email from
                 FormsAuthentication.SetAuthCookie(email, true);
 
                 string returnUrl = Request.QueryString["ReturnUrl"] as string;
